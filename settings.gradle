@@ -1,0 +1,2 @@
+rootProject.name='OpenGlBegin'
+include ':app'
