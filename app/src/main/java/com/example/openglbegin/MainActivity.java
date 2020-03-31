@@ -2,6 +2,7 @@ package com.example.openglbegin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         glSurfaceView.onPause();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
+
         glSurfaceView = new GLSurfaceView(this);
         glSurfaceView.setEGLContextClientVersion(2);
         glSurfaceView.setRenderer( new OpenGLRenderer());
@@ -48,11 +51,12 @@ public class MainActivity extends AppCompatActivity {
         ll.addView(b);
         ll.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
         this.addContentView(ll,
-                new ActionBar.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.FILL_PARENT));
+                new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT));
     }
 
     private  boolean supportES2(){
         ActivityManager activityManager = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+        assert activityManager != null;
         ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
         return (configurationInfo.reqGlEsVersion >= 0x20000);
     }
