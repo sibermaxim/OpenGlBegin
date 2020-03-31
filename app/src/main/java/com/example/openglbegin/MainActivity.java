@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
-
+int i;
         glSurfaceView = new GLSurfaceView(this);
         glSurfaceView.setEGLContextClientVersion(2);
         glSurfaceView.setRenderer( new OpenGLRenderer());
